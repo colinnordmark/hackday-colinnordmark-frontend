@@ -1,5 +1,5 @@
 import { MusicListing } from "./MusicListing";
-import { Song } from "./Song";
+import { Song } from "../../types/Song";
 
 type Props = {
   music: Song[];
@@ -11,7 +11,7 @@ export function BrowsingList({ music }: Props) {
         <MusicListing
           name={song.name}
           artist={song.artist}
-          source={song.source}
+          source={song.url}
           key={song.id}
         />
       ))}

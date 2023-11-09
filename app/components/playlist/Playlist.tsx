@@ -1,5 +1,7 @@
+import { siteFromUrl } from "@/app/http/MusicUtilities";
 import { SongButton } from "..";
-import { Song } from "../Browsing/Song"
+import { Song } from "../../types/Song"
+import { url } from "inspector";
 
 type Props = {
     music: Song[];
@@ -14,7 +16,7 @@ export function Playlist({ music }:Props){
             <SongButton
             name={song.name}
             artist={song.artist}
-            source={song.source}
+            source={siteFromUrl(song.url)}
             key={song.id}
           />)
           }

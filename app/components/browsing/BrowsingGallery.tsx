@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { BrowsingList } from "./BrowsingList";
-import { Song } from "./Song";
+import { Song } from "../../types/Song";
+import { siteFromUrl } from "@/app/http/MusicUtilities";
 
 type Props = {
   music: Song[];
@@ -15,7 +16,7 @@ export function BrowsingGallery({ music }:Props) {
 
   
   useEffect(() => {
-    setFilteredMusic(music.filter((song) => song.source == musicFilter.current.value));
+    setFilteredMusic(music.filter((song) => song.url == musicFilter.current.value));
   }, []);
 
   return (
@@ -25,7 +26,7 @@ export function BrowsingGallery({ music }:Props) {
           id="source"
           name="sources"
           ref={musicFilter}
-          onChange={() => setFilteredMusic(music.filter((song) => song.source == musicFilter.current.value))}
+          onChange={() => setFilteredMusic(music.filter((song) => siteFromUrl(song.url) == musicFilter.current.value))}
           className='bg-black text-white w-[100%] p-2 rounded-lg'
         >
           <option value="Soundcloud">Soundcloud</option>

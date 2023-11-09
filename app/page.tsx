@@ -1,7 +1,22 @@
+'use client'
+
 import Image from 'next/image'
 import {Head, BrowsingGallery, Playlist } from "./components";
+import { useEffect, useState } from 'react';
+import { Song } from './types/Song';
+import axios from 'axios';
 
 export default function Home() {
+  const [music, setMusic] = useState<Song[]>();
+
+  const fetchBackend = async () => {
+    const response = await axios.get("http://localhost:4000/api/songs");
+    const data = response.data;
+    console.log (data);
+    setMusic(data); 
+}
+
+
   const temp = [
     {
       name: "Chattermax",
@@ -23,12 +38,18 @@ export default function Home() {
     },
   ];
 
+  useEffect(() => {
+    fetchBackend()
+  
+  }, [])
+  
+
   return (
     <>
       <Head/>
       <main className="flex h-[calc(100vh-4rem)] flex-row justify-around items-top p-4 w-screen">
-        <BrowsingGallery music={temp}/>
-        <Playlist music={temp}/>
+        <BrowsingGallery music={music || []}/>
+        <Playlist music={music || []}/>
       </main>
     </>
   );
