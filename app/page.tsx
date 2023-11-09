@@ -19,7 +19,7 @@ export default function Home() {
   };
 
   const fetchPlaylist = async () => {
-    const response = await axios.get("http://localhost:4000/api/playlist");
+    const response = await axios.get("http://localhost:4000/api/playlists/1");
     const data = response.data;
     console.log(data);
     setActivePlaylist(data);
