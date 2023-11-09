@@ -7,9 +7,10 @@ import { siteFromUrl } from "@/app/http/MusicUtilities";
 
 type Props = {
   music: Song[];
+  postSong: (id: string) => void;
 }
 
-export function BrowsingGallery({ music }:Props) {
+export function BrowsingGallery({ music, postSong }:Props) {
   const [filteredMusic, setFilteredMusic] = useState<Song[]>();
   const musicFilter = useRef<HTMLSelectElement>({} as HTMLSelectElement);
 
@@ -34,7 +35,7 @@ export function BrowsingGallery({ music }:Props) {
           <option value="Spotify">Spotify</option>
         </select>
       </form>
-      <BrowsingList music={filteredMusic||[]} />
+      <BrowsingList music={filteredMusic||[]} postSong={postSong} />
     </section>
   );
 }

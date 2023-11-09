@@ -25,6 +25,14 @@ export default function Home() {
     setActivePlaylist(data);
   };
 
+  const postToApi = async (id: string) => {
+    console.log('you tried to post ' + id);
+  };
+
+  function postToPlaylist(id: string){
+    postToApi(id);
+  }
+
   const temp = [
     {
       name: "Chattermax",
@@ -55,8 +63,8 @@ export default function Home() {
     <>
       <Head />
       <main className="flex h-[calc(100vh-4rem)] flex-row justify-around items-top p-4 w-screen">
-        <BrowsingGallery music={music || []} />
-        <Playlist music={music || []} />
+        <BrowsingGallery music={music || []} postSong={postToApi} />
+        <Playlist music={activePlaylist || []} />
       </main>
     </>
   );

@@ -3,15 +3,15 @@ import { Song } from "../../types/Song";
 
 type Props = {
   music: Song[];
+  postSong: (id: string) => void;
 };
-export function BrowsingList({ music }: Props) {
+export function BrowsingList({ music, postSong }: Props) {
   return (
     <section>
       {music.map((song) => (
         <MusicListing
-          name={song.name}
-          artist={song.artist}
-          source={song.url}
+          postSong={postSong}
+          song={song}
           key={song.id}
         />
       ))}
