@@ -13,11 +13,11 @@ export function BrowsingGallery({ music }:Props) {
   const [filteredMusic, setFilteredMusic] = useState<Song[]>();
   const musicFilter = useRef<HTMLSelectElement>({} as HTMLSelectElement);
 
-
+  
   
   useEffect(() => {
-    setFilteredMusic(music.filter((song) => song.url == musicFilter.current.value));
-  }, []);
+    setFilteredMusic(music.filter((song) => siteFromUrl(song.url) == musicFilter.current.value));
+  }, [music]);
 
   return (
     <section className="w-[25%] bg-gray-800 p-5 rounded-xl">
