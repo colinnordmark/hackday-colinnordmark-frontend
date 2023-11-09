@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { SongButton, Head, BrowsingGallery, Playlist } from "./components";
 
 export default function Home() {
   const temp = [
@@ -15,7 +16,7 @@ export default function Home() {
       source: "Youtube",
     },
     {
-      name: "Podcast #5000",
+      name: "Podcast #10,000",
       artist: "Joe Rogan",
       id: "3",
       source: "Spotify",
