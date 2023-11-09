@@ -21,14 +21,15 @@ export function BrowsingGallery({ music, postSong }:Props) {
   }, [music]);
 
   return (
-    <section className="w-[25%] bg-gray-800 p-5 rounded-xl">
+    <section className="transition duration-700 ease-in-out hover:bg-opacity-40 hover:bg-teal-900 w-[25%] bg-black bg-opacity-25 p-5 rounded-3xl border-2 border-teal-500 border-opacity-30 drop-shadow-lg">
+      <h1 className=" text-lg mb-3">Browser</h1>
       <form>
         <select
           id="source"
           name="sources"
           ref={musicFilter}
           onChange={() => setFilteredMusic(music.filter((song) => siteFromUrl(song.url) == musicFilter.current.value))}
-          className='bg-black text-white w-[100%] p-2 rounded-lg'
+          className=' text-sm bg-black text-white w-[100%] p-2 rounded-xl'
         >
           <option value="Soundcloud">Soundcloud</option>
           <option value="Youtube">Youtube</option>

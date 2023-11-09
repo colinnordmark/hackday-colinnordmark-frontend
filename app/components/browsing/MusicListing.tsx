@@ -13,9 +13,9 @@ export function MusicListing({
 }:Props) {
   
   return (
-    <button onClick={() => postSong(song.id)} className='flex flex-col border-2 border-white p-3 mt-4 rounded-lg w-[100%] justify-between'>
-          <h2>{song.name}</h2>
-          <h2>{song.artist}</h2>
+    <button onClick={() => postSong(song.id)} className='flex flex-col drop-shadow-lg bg-neutral-300  hover:bg-neutral-100 p-3 mt-4 rounded-lg w-[100%] justify-between'>
+          <h2 className='text-sm text-black font-bold'>{song.name}</h2>
+          <h2 className='text-sm text-black font-normal'>{song.artist}</h2>
     </button>
   );
 }

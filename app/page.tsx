@@ -9,6 +9,8 @@ import axios from "axios";
 export default function Home() {
   const [music, setMusic] = useState<Song[]>();
   const [activePlaylist, setActivePlaylist] = useState<Song[]>();
+  const [selectedPlaylist, setSelectedPlaylist] = useState<String>();
+  
 
   const fetchBackend = async () => {
     const response = await axios.get("http://localhost:4000/api/songs");
@@ -24,7 +26,7 @@ export default function Home() {
     setActivePlaylist(data);
   };
 
-  const postToApi = async (id: string) => {
+  const handlePost = async (id: string) => {
     console.log("you tried to post " + id);
 
     const data = await axios({
@@ -37,9 +39,23 @@ export default function Home() {
     setActivePlaylist(data.data);
   };
 
-  function postToPlaylist(id: string) {
-    postToApi(id);
-  }
+  const handleDelete = async (idToDelete: string) => {
+    console.log("you tried to delete " + idToDelete);
+
+    if(confirm('Are you sure you want to delete this song?')) {
+      const data = await axios({
+        method: "delete",
+        url: "http://localhost:4000/api/playlists/1",
+        data: { songId: idToDelete },
+      });
+      console.log(data);
+      fetchPlaylist();
+    }
+    
+
+    
+};
+
 
   useEffect(() => {
     fetchBackend();
@@ -49,9 +65,9 @@ export default function Home() {
   return (
     <>
       <Head />
-      <main className="flex h-[calc(100vh-4rem)] flex-row justify-around items-top p-4 w-screen">
-        <BrowsingGallery music={music || []} postSong={postToApi} />
-        <Playlist music={activePlaylist || []} />
+      <main className=" pb-10 bg-gradient-to-b from-teal-900 to-transparent flex h-[calc(100vh-4rem)] flex-row justify-around items-top p-4 w-screen">
+        <BrowsingGallery music={music || []} postSong={handlePost} />
+        <Playlist music={activePlaylist || []} deleteSong={handleDelete}/>
       </main>
     </>
   );
