@@ -10,7 +10,6 @@ export default function Home() {
   const [music, setMusic] = useState<Song[]>();
   const [activePlaylist, setActivePlaylist] = useState<Song[]>();
 
-
   const fetchBackend = async () => {
     const response = await axios.get("http://localhost:4000/api/songs");
     const data = response.data;
@@ -26,33 +25,21 @@ export default function Home() {
   };
 
   const postToApi = async (id: string) => {
-    console.log('you tried to post ' + id);
+    console.log("you tried to post " + id);
+
+    const data = await axios({
+      method: "post",
+      url: "http://localhost:4000/api/playlists/1",
+      data: { songId: id },
+    });
+
+    console.log(data);
+    setActivePlaylist(data.data);
   };
 
-  function postToPlaylist(id: string){
+  function postToPlaylist(id: string) {
     postToApi(id);
   }
-
-  const temp = [
-    {
-      name: "Chattermax",
-      artist: "Some bird",
-      id: "1",
-      source: "Soundcloud",
-    },
-    {
-      name: "Fireplace 10 hours",
-      artist: "Fireplace",
-      id: "2",
-      source: "Youtube",
-    },
-    {
-      name: "Podcast #10,000",
-      artist: "Joe Rogan",
-      id: "3",
-      source: "Spotify",
-    },
-  ];
 
   useEffect(() => {
     fetchBackend();
