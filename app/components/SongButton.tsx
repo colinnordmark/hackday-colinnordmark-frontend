@@ -4,6 +4,7 @@ import { useState, FC } from 'react';
 import React, { Component }  from 'react';
 import { siteFromUrl } from '../http/MusicUtilities';
 import { Song } from '../types/Song';
+import { redirect } from 'next/navigation';
 
 type Props = {
   song: Song,
@@ -28,5 +29,6 @@ export function SongButton({
           
     </button>
     {selected && <button onClick={() => deleteSong(song.id)} className=' text-sm bg-neutral-800 transition duration-150 ease-in delay-50 hover:bg-emerald-800 p-3 mb-4 rounded-lg w-[10%] justify-between'>Delete</button>}
+    {selected && <a href={song.url} target="_blank" className=' text-sm bg-neutral-800 transition duration-150 ease-in delay-50 hover:bg-emerald-800 p-3 mb-4 rounded-lg w-[10%] justify-between'>Play</a>}
     </article>);
 }
