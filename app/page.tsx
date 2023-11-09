@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { SongButton, Head, BrowsingGallery, Playlist } from "./components";
+import {Head, BrowsingGallery, Playlist } from "./components";
 
 export default function Home() {
   const temp = [

@@ -26,7 +26,7 @@ export function BrowsingGallery({ music }:Props) {
           name="sources"
           ref={musicFilter}
           onChange={() => setFilteredMusic(music.filter((song) => song.source == musicFilter.current.value))}
-          className="bg-black text-white w-[100%] p-2 rounded-lg"
+          className='bg-black text-white w-[100%] p-2 rounded-lg'
         >
           <option value="Soundcloud">Soundcloud</option>
           <option value="Youtube">Youtube</option>
