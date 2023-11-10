@@ -5,11 +5,12 @@ import { Head, BrowsingGallery, Playlist } from "./components";
 import { useEffect, useState } from "react";
 import { Song } from "./types/Song";
 import axios from "axios";
+import { PlaylistContainer } from "./components/playlist/PlaylistContainer";
 
 export default function Home() {
   const [music, setMusic] = useState<Song[]>();
   const [activePlaylist, setActivePlaylist] = useState<Song[]>();
-  const [selectedPlaylist, setSelectedPlaylist] = useState<String>();
+  const [selectedPlaylist, setSelectedPlaylist] = useState<string>();
   
 
   const fetchBackend = async () => {
@@ -19,11 +20,12 @@ export default function Home() {
     setMusic(data);
   };
 
-  const fetchPlaylist = async () => {
-    const response = await axios.get("http://localhost:4000/api/playlists/1");
+  const fetchPlaylist = async (id: string) => {
+    const response = await axios.get(`http://localhost:4000/api/playlists/${id}`);
     const data = response.data;
     console.log(data);
     setActivePlaylist(data);
+    setSelectedPlaylist(id);
   };
 
   const handlePost = async (id: string) => {
@@ -31,7 +33,7 @@ export default function Home() {
 
     const data = await axios({
       method: "post",
-      url: "http://localhost:4000/api/playlists/1",
+      url: `http://localhost:4000/api/playlists/${selectedPlaylist}`,
       data: { songId: id },
     });
 
@@ -49,7 +51,7 @@ export default function Home() {
         data: { songId: idToDelete },
       });
       console.log(data);
-      fetchPlaylist();
+      fetchPlaylist(selectedPlaylist || "1");
     }
     
 
@@ -59,7 +61,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchBackend();
-    fetchPlaylist();
+    fetchPlaylist("1");
   }, []);
 
   return (
@@ -67,9 +69,11 @@ export default function Home() {
       <Head />
       <main className=" pb-10 bg-gradient-to-b from-teal-900 to-transparent flex h-[calc(100vh-4rem)] flex-row justify-around items-top p-4 w-screen">
         <BrowsingGallery music={music || []} postSong={handlePost} />
-      
-        <Playlist music={activePlaylist || []} deleteSong={handleDelete}/>
+        <PlaylistContainer getNewPlaylist={fetchPlaylist} music={activePlaylist || []} deleteSong={handleDelete}/>
       </main>
     </>
   );
 }
+
+/*        <PlaylistContainer music={activePlaylist || []} deleteSong={handleDelete}/>
+ */
