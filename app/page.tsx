@@ -65,13 +65,13 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <Head />
-      <main className=" pb-10 bg-gradient-to-b from-teal-900 to-transparent flex h-[calc(100vh-4rem)] flex-row justify-around items-top p-4 w-screen">
+    <main className="pb-10 bg-gradient-to-b from-teal-900 to-transparent">
+        <Head />
+      <section className=" flex h-[calc(100vh-6rem)] flex-row justify-center p-4 items-top  mx-auto w-full max-w-screen-xl">
         <BrowsingGallery music={music || []} postSong={handlePost} />
         <PlaylistContainer getNewPlaylist={fetchPlaylist} music={activePlaylist || []} deleteSong={handleDelete}/>
-      </main>
-    </>
+      </section>
+    </main>
   );
 }
 
