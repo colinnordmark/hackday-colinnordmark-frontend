@@ -29,7 +29,7 @@ export function BrowsingGallery({ music, postSong }:Props) {
           name="sources"
           ref={musicFilter}
           onChange={() => setFilteredMusic(music.filter((song) => siteFromUrl(song.url) == musicFilter.current.value))}
-          className=' text-sm bg-black text-white w-[100%] p-2 rounded-xl'
+          className=' text-sm bg-black bg-opacity-50 text-white w-[100%] p-2 rounded-xl'
         >
           <option value="Soundcloud">Soundcloud</option>
           <option value="Youtube">Youtube</option>
