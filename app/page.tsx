@@ -67,6 +67,7 @@ export default function Home() {
       <Head />
       <main className=" pb-10 bg-gradient-to-b from-teal-900 to-transparent flex h-[calc(100vh-4rem)] flex-row justify-around items-top p-4 w-screen">
         <BrowsingGallery music={music || []} postSong={handlePost} />
+      
         <Playlist music={activePlaylist || []} deleteSong={handleDelete}/>
       </main>
     </>

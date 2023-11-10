@@ -11,7 +11,7 @@ type Props = {
 }
 
 //This is supposed to handle selection of playlist
-function PlaylistContainer({ music, deleteSong, getNewPlaylist}: Props){
+export function PlaylistContainer({ music, deleteSong, getNewPlaylist}: Props){
     const playlistSelector = useRef<HTMLSelectElement>({} as HTMLSelectElement);
 
     return(<section>
@@ -24,9 +24,9 @@ function PlaylistContainer({ music, deleteSong, getNewPlaylist}: Props){
           onChange={() => getNewPlaylist(playlistSelector.current.value)}
           className=' text-sm bg-black text-white w-[100%] p-2 rounded-xl'
         >
-          <option value="Soundcloud">Soundcloud</option>
-          <option value="Youtube">Youtube</option>
-          <option value="Spotify">Spotify</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
         </select>
       </form>
     </section>
