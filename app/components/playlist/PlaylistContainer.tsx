@@ -22,7 +22,7 @@ export function PlaylistContainer({ music, deleteSong, getNewPlaylist}: Props){
           name="sources"
           ref={playlistSelector}
           onChange={() => getNewPlaylist(playlistSelector.current.value)}
-          className=' text-sm mb-3 bg-black bg-opacity-50 text-white w-[100%] p-2 rounded-xl'
+          className=' text-sm mb-3 bg-black bg-opacity-50 text-white w-[100%] p-2 rounded-lg'
         >
           <option value="1">1</option>
           <option value="2">2</option>
