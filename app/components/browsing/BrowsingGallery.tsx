@@ -21,7 +21,7 @@ export function BrowsingGallery({ music, postSong }:Props) {
   }, [music]);
 
   return (
-    <section className="transition duration-700 ease-in-out hover:bg-opacity-40 hover:bg-teal-900 w-[25%] bg-black bg-opacity-25 p-5 mr-8 rounded-3xl border-2 border-teal-500 border-opacity-30 drop-shadow-lg">
+    <section className="transition duration-700 ease-in-out hover:bg-opacity-40 hover:bg-teal-900 w-[25%] bg-black bg-opacity-25 p-5 pb-5 mr-8 rounded-3xl border-2 border-teal-500 border-opacity-30 drop-shadow-lg">
       <h1 className=" text-lg mb-3">Browser</h1>
       <form>
         <select

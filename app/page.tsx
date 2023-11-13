@@ -47,7 +47,7 @@ export default function Home() {
     if(confirm('Are you sure you want to delete this song?')) {
       const data = await axios({
         method: "delete",
-        url: "http://localhost:4000/api/playlists/1",
+        url: `http://localhost:4000/api/playlists/${selectedPlaylist}`,
         data: { songId: idToDelete },
       });
       console.log(data);
@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <main className="pb-10 bg-gradient-to-b from-teal-900 to-transparent">
         <Head />
-      <section className=" flex h-[calc(100vh-6rem)] flex-row justify-center p-4 items-top  mx-auto w-full max-w-screen-xl">
+      <section className=" flex h-[calc(100vh-8rem)] flex-row justify-center p-4 items-top  mx-auto w-full max-w-screen-2xl overflow-hidden">
         <BrowsingGallery music={music || []} postSong={handlePost} />
         <PlaylistContainer getNewPlaylist={fetchPlaylist} music={activePlaylist || []} deleteSong={handleDelete}/>
       </section>

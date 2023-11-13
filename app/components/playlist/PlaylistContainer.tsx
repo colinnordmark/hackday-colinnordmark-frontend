@@ -24,9 +24,9 @@ export function PlaylistContainer({ music, deleteSong, getNewPlaylist}: Props){
           onChange={() => getNewPlaylist(playlistSelector.current.value)}
           className=' text-sm mb-3 bg-black bg-opacity-50 text-white w-[100%] p-2 rounded-lg'
         >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+          <option value="1">Favourites</option>
+          <option value="2">Bookmarks</option>
+          <option value="3">Party playlist</option>
         </select>
       </form>
       <Playlist music={music} deleteSong={deleteSong}/>

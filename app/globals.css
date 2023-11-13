@@ -19,7 +19,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(-45deg, #2DD4BF, #005648, #9A2D9E, #F181F2);
+  background: linear-gradient(-45deg, #2DD4BF, #00856f, #9A2D9E, #F181F2);
 	background-size: 400% 400%;
 	animation: gradient 20s ease infinite;
 	height: 100vh;

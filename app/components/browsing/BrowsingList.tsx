@@ -7,7 +7,7 @@ type Props = {
 };
 export function BrowsingList({ music, postSong }: Props) {
   return (
-    <section>
+    <section className=" overflow-scroll h-[85%] mt-3">
       {music.map((song) => (
         <MusicListing
           postSong={postSong}
